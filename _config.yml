@@ -1,0 +1,29 @@
+# Trudee Website — Jekyll config
+# GitHub Pages compatible
+
+title: Trudee
+description: "Text a video, get a report. Trudee turns a quick phone video into an organized, professional field report."
+baseurl: ""
+url: "https://trudee.pro"
+
+# Build — no theme so our _layouts and css/main.css are used
+theme: null
+
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - docs/
+  - vendor
+  - .github
+
+# Plugins: uncomment if using GitHub Pages gem or add to Gemfile
+# plugins:
+#   - jekyll-feed
+#   - jekyll-sitemap
+#   - jekyll-seo-tag
