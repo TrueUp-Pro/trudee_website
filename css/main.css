@@ -622,6 +622,13 @@ img {
   gap: var(--space-lg);
 }
 
+/* Force a single horizontal row (e.g. the 3-step How It Works) */
+.scenarios-3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .scenario {
   display: flex;
   gap: var(--space-md);
