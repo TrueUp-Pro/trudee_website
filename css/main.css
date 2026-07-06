@@ -626,8 +626,14 @@ img {
   display: flex;
   gap: var(--space-md);
   padding: var(--space-lg);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface);
   border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+/* Dark sections (e.g. parallax) get the translucent white treatment */
+.section-dark .scenario {
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -649,13 +655,21 @@ img {
   font-size: 1.0625rem;
   font-weight: 600;
   margin: 0 0 var(--space-xs);
-  color: white;
+  color: var(--color-text);
 }
 
 .scenario p {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-text-muted);
   margin: 0;
   font-size: 0.9375rem;
+}
+
+.section-dark .scenario h4 {
+  color: white;
+}
+
+.section-dark .scenario p {
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* ==========================================
