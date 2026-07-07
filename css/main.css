@@ -118,12 +118,23 @@ img {
   transform: scale(1.02);
 }
 
-/* Text wordmark (placeholder until a Trudee logo lands) */
+/* Text wordmark: stylized crane/level "T" mark + "rudee" */
 .site-header .logo-text {
+  display: inline-flex;
+  align-items: flex-end;
   font-weight: 800;
   font-size: 1.7rem;
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+/* The crane-arm "T" replaces the capital T; its arm overhangs the "ru" */
+.site-header .logo-mark {
+  display: block;
+  height: 1.15em;
+  width: auto;
+  margin-right: -0.30em;
+  margin-bottom: -0.02em;
 }
 
 .site-header .logo-tru {
@@ -132,13 +143,6 @@ img {
 
 .site-header .logo-dee {
   color: var(--color-blue);
-}
-
-.site-header .logo img {
-  display: block;
-  height: 4.25rem;
-  width: auto;
-  object-fit: contain;
 }
 
 .site-header .nav {
