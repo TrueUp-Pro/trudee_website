@@ -123,13 +123,15 @@ img {
   font-weight: 800;
   font-size: 1.7rem;
   letter-spacing: -0.02em;
-  color: var(--color-blue-dark);
   line-height: 1;
 }
 
-.site-header .logo-text::after {
-  content: ".";
+.site-header .logo-tru {
   color: var(--color-orange);
+}
+
+.site-header .logo-dee {
+  color: var(--color-blue);
 }
 
 .site-header .logo img {
