@@ -23,7 +23,16 @@
   <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- TODO: add Trudee's own Google Analytics (gtag.js) ID here before launch. -->
+  {% if site.ga_measurement_id and jekyll.environment == "production" %}
+  <!-- GA4. Only renders on production builds (GitHub Pages sets JEKYLL_ENV=production) — absent from local `jekyll serve`. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_measurement_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga_measurement_id }}');
+  </script>
+  {% endif %}
 </head>
 <body>
   {% include header.html %}

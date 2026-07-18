@@ -112,10 +112,13 @@
   var triggers = document.querySelectorAll('.js-beta-form-open');
   var closeButtons = modal.querySelectorAll('[data-close-modal]');
 
-  function openModal() {
+  function openModal(source) {
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    if (window.gtag) {
+      window.gtag('event', 'beta_modal_open', { source: source });
+    }
   }
 
   function closeModal() {
@@ -127,7 +130,7 @@
   triggers.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      openModal();
+      openModal(btn.getAttribute('data-cta-source'));
     });
   });
 
@@ -213,6 +216,9 @@
     panel.hidden = false;
     panel.setAttribute('tabindex', '-1');
     panel.focus();
+    if (ok && window.gtag) {
+      window.gtag('event', 'beta_form_submit');
+    }
   }
 
   // The POST is cross-origin, so the response is opaque: `load` fires for
