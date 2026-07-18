@@ -1,3 +1,11 @@
+{% comment %}
+  Themed front-end for the Trudee Beta Program Google Form, shown inside the
+  site's beta modal. Posts to the form's /formResponse endpoint through a hidden
+  iframe so the visitor never leaves the Trudee site. Field names are the form's
+  entry IDs — if the form's questions change, re-read them from the viewform
+  source (docs.google.com/forms/d/1fRnXWX1tvOFxF-svcQ25CQepsyEUDqp0cyqYpLNeNBg)
+  before editing these.
+{% endcomment %}
 <div id="beta-form-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="beta-form-title" aria-hidden="true">
   <div class="modal-backdrop" data-close-modal></div>
   <div class="modal-box">
@@ -5,16 +13,92 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h2 id="beta-form-title" class="modal-title">Join the Trudee Beta Program</h2>
-    <!-- TODO: replace with the Trudee beta Google Form URL (currently the TrueUp form). -->
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdrh6-ophzTQU8mzHgfHg5IGZj4nPsH5tays0XYp9nb8vUPtA/viewform?embedded=true"
-      width="100%"
-      height="600"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-      title="Join the Trudee Beta Program"
-    >Loading…</iframe>
+
+    <div class="modal-body">
+      <div class="contact-form" id="contact-form">
+        <form
+          class="cf-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScW6zbIOS078Id2Bu5s0CXI4Gbzt1sZro8jnpLWsF6GHXSwRw/formResponse"
+          method="post"
+          target="cf-sink"
+          novalidate
+        >
+          <div class="cf-row">
+            <label class="cf-field">
+              <span class="cf-label">Your name</span>
+              <input type="text" name="entry.412851059" autocomplete="name" required>
+            </label>
+            <label class="cf-field">
+              <span class="cf-label">Email</span>
+              <input type="email" name="entry.241288818" autocomplete="email" required>
+            </label>
+          </div>
+
+          <div class="cf-row">
+            <label class="cf-field">
+              <span class="cf-label">Phone</span>
+              <input type="tel" name="entry.612723856" autocomplete="tel" required>
+            </label>
+            <label class="cf-field">
+              <span class="cf-label">Your role &amp; company <span class="cf-optional">optional</span></span>
+              <input type="text" name="entry.1484808350" placeholder="Owner, HVAC tech, inspector…">
+            </label>
+          </div>
+
+          <label class="cf-field">
+            <span class="cf-label">Your primary expertise <span class="cf-optional">optional</span></span>
+            <select name="entry.2068925271">
+              <option value="">Select one…</option>
+              <option value="Skilled Professional">Skilled Professional</option>
+              <option value="Field Technician">Field Technician</option>
+              <option value="Service Expert">Service Expert</option>
+              <option value="Tradesperson">Tradesperson</option>
+              <option value="Contractor">Contractor</option>
+              <option value="Technical Specialist">Technical Specialist</option>
+            </select>
+          </label>
+
+          <fieldset class="cf-field cf-fieldset">
+            <legend class="cf-label">Trudee is in beta, so there may be rough edges. Where does that leave you?</legend>
+            <label class="cf-choice">
+              <input type="radio" name="entry.472802353" value="Yes, I understand and am happy to provide feedback on my experience.">
+              <span>I understand, and I'm happy to share feedback along the way.</span>
+            </label>
+            <label class="cf-choice">
+              <input type="radio" name="entry.472802353" value="No, I would prefer to wait for the official public launch.">
+              <span>I'd rather wait for the public launch.</span>
+            </label>
+          </fieldset>
+
+          <label class="cf-field">
+            <span class="cf-label">Anything you'd like us to know? <span class="cf-optional">optional</span></span>
+            <textarea name="entry.301664730" rows="4"></textarea>
+          </label>
+
+          <input type="hidden" name="fvv" value="1">
+          <input type="hidden" name="pageHistory" value="0">
+          <input type="hidden" name="fbzx" value="">
+
+          <div class="cf-actions">
+            <button type="submit" class="btn btn-primary cf-submit">Request Access</button>
+            <span class="cf-note">We read every one. Prefer email? <a href="mailto:hello@trudee.ai">hello@trudee.ai</a></span>
+          </div>
+        </form>
+
+        <div class="cf-thanks" hidden>
+          <h3>Thank you — that's in.</h3>
+          <p>We'll be in touch shortly at the address you gave us.</p>
+        </div>
+
+        <div class="cf-failed" hidden>
+          <h3>That didn't go through.</h3>
+          <p>Something on our end refused the message. Email us at
+            <a href="mailto:hello@trudee.ai">hello@trudee.ai</a> and we'll pick it up from there.</p>
+        </div>
+
+        <iframe name="cf-sink" title="Form submission target" hidden></iframe>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -22,8 +106,9 @@
 (function() {
   var modal = document.getElementById('beta-form-modal');
   if (!modal) return;
+
   var triggers = document.querySelectorAll('.js-beta-form-open');
-  var closeButtons = document.querySelectorAll('[data-close-modal]');
+  var closeButtons = modal.querySelectorAll('[data-close-modal]');
 
   function openModal() {
     modal.setAttribute('aria-hidden', 'false');
@@ -50,6 +135,95 @@
 
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  // ----- Themed Google Form submission -----
+  var root = document.getElementById('contact-form');
+  if (!root) return;
+
+  var form = root.querySelector('.cf-form');
+  var thanks = root.querySelector('.cf-thanks');
+  var failed = root.querySelector('.cf-failed');
+  var submit = root.querySelector('.cf-submit');
+  var sink = root.querySelector('iframe[name="cf-sink"]');
+  var submitted = false;
+  var timer = null;
+
+  // Google expects a per-session token; any random value is accepted.
+  form.elements.fbzx.value = String(Math.floor(Math.random() * 9e18) + 1e18);
+
+  function markInvalid(field, message) {
+    var wrap = field.closest('.cf-field');
+    wrap.classList.add('is-invalid');
+    var msg = wrap.querySelector('.cf-error');
+    if (!msg) {
+      msg = document.createElement('span');
+      msg.className = 'cf-error';
+      wrap.appendChild(msg);
+    }
+    msg.textContent = message;
+  }
+
+  function clearInvalid(field) {
+    var wrap = field.closest('.cf-field');
+    wrap.classList.remove('is-invalid');
+    var msg = wrap.querySelector('.cf-error');
+    if (msg) msg.remove();
+  }
+
+  form.addEventListener('input', function(e) {
+    if (e.target.closest('.cf-field.is-invalid')) clearInvalid(e.target);
+  });
+
+  form.addEventListener('submit', function(e) {
+    var required = form.querySelectorAll('[required]');
+    var firstBad = null;
+
+    for (var i = 0; i < required.length; i++) {
+      var field = required[i];
+      if (!field.value.trim()) {
+        markInvalid(field, 'This one we need.');
+        firstBad = firstBad || field;
+      } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())) {
+        markInvalid(field, 'That address doesn’t look right.');
+        firstBad = firstBad || field;
+      } else {
+        clearInvalid(field);
+      }
+    }
+
+    if (firstBad) {
+      e.preventDefault();
+      firstBad.focus();
+      return;
+    }
+
+    submitted = true;
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    timer = setTimeout(function() { finish(false); }, 15000);
+  });
+
+  function finish(ok) {
+    clearTimeout(timer);
+    form.hidden = true;
+    var panel = ok ? thanks : failed;
+    panel.hidden = false;
+    panel.setAttribute('tabindex', '-1');
+    panel.focus();
+  }
+
+  // The POST is cross-origin, so the response is opaque: `load` fires for
+  // Google's confirmation page and its error pages alike, and we cannot tell
+  // them apart. Treating load as success is only safe while the form accepts
+  // anonymous responses — if "Collect email addresses" is ever switched back
+  // on, Google 401s every submission and this reports a false success.
+  sink.addEventListener('load', function() {
+    if (!submitted) return; // ignore the initial about:blank load
+    finish(true);
+  });
+  sink.addEventListener('error', function() {
+    if (submitted) finish(false);
   });
 })();
 </script>
