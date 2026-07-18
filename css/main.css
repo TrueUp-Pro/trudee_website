@@ -637,6 +637,179 @@ img {
 }
 
 /* ==========================================
+   PRODUCT PROOF (SMS mockup + sample report)
+   ========================================== */
+
+.product-proof {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-proof-sms,
+.product-proof-report {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* -- Phone-shaped SMS thread mockup -- */
+
+.phone-frame {
+  width: min(300px, 100%);
+  margin: 0 auto;
+  background: var(--color-bg-dark);
+  border-radius: 32px;
+  padding: 16px 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.phone-frame::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 0 auto 12px;
+}
+
+.phone-screen {
+  background: var(--color-bg);
+  border-radius: 20px;
+  padding: var(--space-lg) var(--space-md);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.sms-bubble {
+  max-width: 82%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.sms-bubble p {
+  margin: 0 0 6px;
+}
+
+.sms-outgoing {
+  align-self: flex-end;
+  background: var(--color-blue);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.sms-incoming {
+  align-self: flex-start;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  border-bottom-left-radius: 4px;
+}
+
+.sms-video-msg {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.sms-video-thumb {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sms-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-blue);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* -- Sample report preview -- */
+
+.product-proof-report {
+  text-align: center;
+}
+
+.report-stack {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+}
+
+.report-page {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+}
+
+.report-page-front {
+  position: relative;
+  z-index: 3;
+}
+
+.report-page-back-1,
+.report-page-back-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.report-page-back-1 {
+  z-index: 2;
+  transform: translate(10px, 10px);
+  opacity: 0.9;
+}
+
+.report-page-back-2 {
+  z-index: 1;
+  transform: translate(20px, 20px);
+  opacity: 0.75;
+}
+
+.report-caption {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  margin: 0 0 var(--space-md);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-blue);
+  border: 2px solid var(--color-blue);
+}
+
+.btn-outline:hover {
+  background: var(--color-blue);
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .product-proof {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+}
+
+/* ==========================================
    USE CASES / SCENARIOS
    ========================================== */
 

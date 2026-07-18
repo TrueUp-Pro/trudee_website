@@ -124,6 +124,37 @@ parallax: true
         The video is the easy part. Trudee does the organizing—so what comes back looks like it took an hour to write.
       </p>
     </div>
+
+    <!-- Product Proof: SMS thread + real sample report -->
+    <div class="product-proof">
+      <div class="product-proof-sms">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="sms-bubble sms-outgoing sms-video-msg">
+              <span class="sms-video-thumb" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M4 2.5v11l9-5.5z"></path></svg>
+              </span>
+              <span>Porch walkthrough, 90 sec</span>
+            </div>
+            <div class="sms-bubble sms-incoming">Got it — building your report.</div>
+            <div class="sms-bubble sms-incoming">
+              <p>Your report is ready:</p>
+              <span class="sms-chip">Porch Exterior Assessment (PDF)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-proof-report">
+        <div class="report-stack">
+          <img src="{{ '/assets/samples/sample-page-4.png' | relative_url }}" alt="" class="report-page report-page-back-2" loading="lazy" aria-hidden="true">
+          <img src="{{ '/assets/samples/sample-page-2.png' | relative_url }}" alt="" class="report-page report-page-back-1" loading="lazy" aria-hidden="true">
+          <img src="{{ '/assets/samples/sample-page-1.png' | relative_url }}" alt="Sample Trudee field report showing a porch exterior condition assessment" class="report-page report-page-front" loading="lazy">
+        </div>
+        <p class="report-caption">A real Trudee report — porch exterior assessment</p>
+        <a href="{{ '/assets/samples/Trudee_Sample_Report.pdf' | relative_url }}" target="_blank" rel="noopener" class="btn btn-outline js-sample-report-link">See the full sample report (PDF)</a>
+      </div>
+    </div>
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon feature-icon-blue">
@@ -246,3 +277,15 @@ parallax: true
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  document.querySelectorAll('.js-sample-report-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.gtag) {
+        window.gtag('event', 'sample_report_download');
+      }
+    });
+  });
+})();
+</script>
