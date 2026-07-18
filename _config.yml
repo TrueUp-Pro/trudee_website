@@ -6,6 +6,10 @@ description: "Text a video, get a report. Trudee turns a quick phone video into 
 baseurl: ""
 url: "https://trudee.pro"
 
+# Google Analytics (GA4). Only rendered in _layouts/default.html when
+# jekyll.environment == "production" (GitHub Pages sets this on deploy).
+ga_measurement_id: G-XK98Y5XC0V
+
 # Build — no theme so our _layouts and css/main.css are used
 theme: null
 

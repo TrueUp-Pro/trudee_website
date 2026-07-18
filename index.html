@@ -8,7 +8,7 @@ parallax: true
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
-    <span class="hero-badge">Field Reports for the Trades</span>
+    <span class="hero-badge">Now Onboarding Beta Crews</span>
     <h1>Text a Video.<br><span class="highlight">Get a Report.</span></h1>
     <p class="hero-subtitle">
       Record a quick video on the job. Text it to Trudee. Get back an
@@ -16,8 +16,8 @@ parallax: true
       No app to learn, no forms to fill out.
     </p>
     <div class="hero-cta">
-      <a href="{{ '/pricing/' | relative_url }}" class="btn btn-primary">See Pricing</a>
-      <a href="#how-it-works" class="btn btn-secondary">How It Works</a>
+      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="hero">Join the Beta — First 10 Reports Free</a>
+      <a href="{{ '/pricing/' | relative_url }}" class="btn btn-secondary">See Pricing</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -124,6 +124,37 @@ parallax: true
         The video is the easy part. Trudee does the organizing—so what comes back looks like it took an hour to write.
       </p>
     </div>
+
+    <!-- Product Proof: SMS thread + real sample report -->
+    <div class="product-proof">
+      <div class="product-proof-sms">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="sms-bubble sms-outgoing sms-video-msg">
+              <span class="sms-video-thumb" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M4 2.5v11l9-5.5z"></path></svg>
+              </span>
+              <span>Porch walkthrough, 90 sec</span>
+            </div>
+            <div class="sms-bubble sms-incoming">Got it — building your report.</div>
+            <div class="sms-bubble sms-incoming">
+              <p>Your report is ready:</p>
+              <span class="sms-chip">Porch Exterior Assessment (PDF)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="product-proof-report">
+        <div class="report-stack">
+          <img src="{{ '/assets/samples/sample-page-4.png' | relative_url }}" alt="" class="report-page report-page-back-2" loading="lazy" aria-hidden="true">
+          <img src="{{ '/assets/samples/sample-page-2.png' | relative_url }}" alt="" class="report-page report-page-back-1" loading="lazy" aria-hidden="true">
+          <img src="{{ '/assets/samples/sample-page-1.png' | relative_url }}" alt="Sample Trudee field report showing a porch exterior condition assessment" class="report-page report-page-front" loading="lazy">
+        </div>
+        <p class="report-caption">A real Trudee report — porch exterior assessment</p>
+        <a href="{{ '/assets/samples/Trudee_Sample_Report.pdf' | relative_url }}" target="_blank" rel="noopener" class="btn btn-outline js-sample-report-link">See the full sample report (PDF)</a>
+      </div>
+    </div>
+
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon feature-icon-blue">
@@ -236,3 +267,25 @@ parallax: true
     </div>
   </div>
 </section>
+
+<!-- Closing CTA -->
+<section class="section section-dark cta-close">
+  <div class="container">
+    <div class="cta-close-inner">
+      <h2 class="cta-close-title">Text a video. Get a report. The first 10 are free.</h2>
+      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="closing">Join the Beta — First 10 Reports Free</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  document.querySelectorAll('.js-sample-report-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.gtag) {
+        window.gtag('event', 'sample_report_download');
+      }
+    });
+  });
+})();
+</script>

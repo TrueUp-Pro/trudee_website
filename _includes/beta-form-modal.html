@@ -13,6 +13,8 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h2 id="beta-form-title" class="modal-title">Join the Trudee Beta Program</h2>
+    <p class="modal-intro">Your first 10 reports are free.</p>
+    <p class="modal-note">We whitelist your number within 1 business day — then you just text a video. No app, no account.</p>
 
     <div class="modal-body">
       <div class="contact-form" id="contact-form">
@@ -87,7 +89,7 @@
 
         <div class="cf-thanks" hidden>
           <h3>Thank you — that's in.</h3>
-          <p>We'll be in touch shortly at the address you gave us.</p>
+          <p>We'll whitelist your number within 1 business day — watch for a text from Trudee.</p>
         </div>
 
         <div class="cf-failed" hidden>
@@ -110,10 +112,13 @@
   var triggers = document.querySelectorAll('.js-beta-form-open');
   var closeButtons = modal.querySelectorAll('[data-close-modal]');
 
-  function openModal() {
+  function openModal(source) {
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    if (window.gtag) {
+      window.gtag('event', 'beta_modal_open', { source: source });
+    }
   }
 
   function closeModal() {
@@ -125,7 +130,7 @@
   triggers.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      openModal();
+      openModal(btn.getAttribute('data-cta-source'));
     });
   });
 
@@ -211,6 +216,9 @@
     panel.hidden = false;
     panel.setAttribute('tabindex', '-1');
     panel.focus();
+    if (ok && window.gtag) {
+      window.gtag('event', 'beta_form_submit');
+    }
   }
 
   // The POST is cross-origin, so the response is opaque: `load` fires for
