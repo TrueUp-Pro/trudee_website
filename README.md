@@ -25,6 +25,8 @@ branch deploy). `CNAME` points the site at `trudee.pro`.
 
 - `index.html` — home (hero, how-it-works, features, platform, scenarios, CTA)
 - `pricing.html` — plan comparison (Free / Contractor / Company / Enterprise)
+- `plumbing.html` — `/plumbing/` vertical landing page for residential plumbing
+  service shops (Seattle-area outbound target); not linked from nav by design
 - `privacy-policy.html`, `terms-of-service.html` — legal
 - `_layouts/default.html` — page shell (head, SEO, analytics)
 - `_includes/` — `header`, `footer`, `beta-form-modal`

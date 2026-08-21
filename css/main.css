@@ -1694,3 +1694,133 @@ hr {
 .mb-md { margin-bottom: var(--space-md); }
 .mb-lg { margin-bottom: var(--space-lg); }
 .mb-xl { margin-bottom: var(--space-xl); }
+
+/* ==========================================
+   VERTICAL LANDING PAGES (e.g. /plumbing/)
+   ========================================== */
+
+/* Shorter hero than the homepage — a landing page should show
+   the pitch and the fold's next section together. */
+.hero-compact {
+  min-height: auto;
+  padding: calc(var(--space-2xl) + 3rem) 0 var(--space-2xl);
+}
+
+/* -- Before/after comparison -- */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.compare-card {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.compare-card-before {
+  background: var(--color-bg-alt);
+}
+
+.compare-card-after {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.compare-tag {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.compare-tag-before {
+  background: #ececec;
+  color: var(--color-text-muted);
+}
+
+.compare-tag-after {
+  background: var(--color-blue-light);
+  color: var(--color-blue-dark);
+}
+
+.compare-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compare-list li {
+  position: relative;
+  padding: var(--space-sm) 0 var(--space-sm) 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.compare-list li:last-child {
+  border-bottom: none;
+}
+
+.compare-list li::before {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
+
+.compare-card-before .compare-list li::before {
+  content: '\00d7';
+  color: #b23c3c;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+.compare-card-after .compare-list li::before {
+  content: '\2713';
+  color: var(--color-success);
+}
+
+.compare-card-after .compare-list li {
+  color: var(--color-text);
+}
+
+/* -- FAQ -- */
+.faq-list {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.faq-item {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--color-blue);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item h3 {
+  margin: 0 0 var(--space-xs);
+  font-size: 1.0625rem;
+  color: var(--color-text);
+}
+
+.faq-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* -- Closing CTA subhead -- */
+.cta-close-sub {
+  margin: calc(var(--space-lg) * -0.5) 0 var(--space-lg);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
