@@ -33,6 +33,9 @@
     gtag('config', '{{ site.ga_measurement_id }}');
   </script>
   {% endif %}
+  {% if page.meta_pixel_id and jekyll.environment == "production" %}
+  {% include meta-pixel.html %}
+  {% endif %}
 </head>
 <body>
   {% include header.html %}
