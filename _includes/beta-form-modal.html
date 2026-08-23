@@ -219,6 +219,17 @@
     if (ok && window.gtag) {
       window.gtag('event', 'beta_form_submit');
     }
+    // Meta Pixel conversion. `fbq` only exists on pages that declare a
+    // meta_pixel_id (currently /plumbing/) in production builds, so this is
+    // guarded rather than assumed. No `value`/`currency`: those are monetary
+    // in Meta's schema and feed ROAS — the 20-report bonus is not revenue, so
+    // it rides along as a descriptive property instead.
+    if (ok && window.fbq) {
+      window.fbq('track', 'CompleteRegistration', {
+        content_name: 'Trudee Beta — 20 bonus reports',
+        status: 'beta_waitlist'
+      });
+    }
   }
 
   // The POST is cross-origin, so the response is opaque: `load` fires for
