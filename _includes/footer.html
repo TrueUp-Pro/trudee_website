@@ -3,6 +3,11 @@
     {% if page.parallax %}
     <div class="footer-brand">
       <p>Trudee turns a quick phone video into an organized, professional report—structured, factual, and ready to share. For the people who do the work in the field.</p>
+      <p class="footer-number">
+        <span class="footer-number-label">Text {{ site.sms.keyword }} to get started</span>
+        <a class="footer-number-value js-text-cta" href="sms:{{ site.sms.e164 }}?&body={{ site.sms.keyword }}" data-cta-source="footer">{{ site.sms.vanity }}</a>
+        <span class="footer-number-digits">{{ site.sms.display }}</span>
+      </p>
     </div>
     <div class="footer-links">
       <h4>Product</h4>
@@ -22,15 +27,22 @@
       <p class="footer-legal">
         <a href="{{ '/terms-of-service/' | relative_url }}">Terms of Service</a>
         <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
+        <a href="{{ '/sms/' | relative_url }}">SMS Terms</a>
       </p>
       <span class="footer-tagline">One video. One report.</span>
     </div>
     {% else %}
     <p>Trudee turns a quick phone video into an organized, professional report—structured, factual, and ready to share.</p>
+    <p class="footer-number">
+      <span class="footer-number-label">Text {{ site.sms.keyword }} to get started</span>
+      <a class="footer-number-value js-text-cta" href="sms:{{ site.sms.e164 }}?&body={{ site.sms.keyword }}" data-cta-source="footer-simple">{{ site.sms.vanity }}</a>
+      <span class="footer-number-digits">{{ site.sms.display }}</span>
+    </p>
     <p class="copy">&copy; {{ 'now' | date: '%Y' }} Trudee. All rights reserved.</p>
     <p class="footer-legal">
       <a href="{{ '/terms-of-service/' | relative_url }}">Terms of Service</a>
       <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
+      <a href="{{ '/sms/' | relative_url }}">SMS Terms</a>
     </p>
     <p class="footer-tagline">One video. One report.</p>
     {% endif %}

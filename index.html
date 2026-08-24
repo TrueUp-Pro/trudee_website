@@ -15,10 +15,12 @@ parallax: true
       <strong>organized, professional report</strong>—structured, factual, and ready to share.
       No app to learn, no forms to fill out.
     </p>
-    <div class="hero-cta">
-      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="hero">Get Started — 20 Extra Free Reports</a>
-      <a href="{{ '/pricing/' | relative_url }}" class="btn btn-secondary">See Pricing</a>
-    </div>
+    {% include text-cta.html source="hero" variant="dark" %}
+    <p class="cta-secondary cta-secondary-dark">
+      Want 20 more free reports?
+      <a href="#" class="js-beta-form-open" data-cta-source="hero-secondary">Tell us who you are</a>
+      &middot; <a href="{{ '/pricing/' | relative_url }}">See pricing</a>
+    </p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="hero-stat-value">1 Text</span>
@@ -99,8 +101,8 @@ parallax: true
       <div class="scenario">
         <div class="scenario-icon">2</div>
         <div>
-          <h4>Text It to Trudee</h4>
-          <p>Send the video by text. No app to download, no account to set up, no upload screen to wait on.</p>
+          <h4>Text It to {{ site.sms.vanity }}</h4>
+          <p>Send the video by text to <strong>{{ site.sms.display }}</strong>. No app to download, no account to set up, no upload screen to wait on.</p>
         </div>
       </div>
       <div class="scenario">
@@ -206,8 +208,12 @@ parallax: true
 <section class="section section-dark cta-close">
   <div class="container">
     <div class="cta-close-inner">
-      <h2 class="cta-close-title">Text a video. Get a report. Your first 5 are free — sign up and we’ll add 20 more.</h2>
-      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="closing">Get Started — 20 Extra Free Reports</a>
+      <h2 class="cta-close-title">Text a video. Get a report.</h2>
+      {% include text-cta.html source="closing" variant="dark" %}
+      <p class="cta-secondary cta-secondary-dark">
+        Want 20 more on top of your 5?
+        <a href="#" class="js-beta-form-open" data-cta-source="closing-secondary">Tell us who you are</a>
+      </p>
     </div>
   </div>
 </section>

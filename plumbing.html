@@ -20,10 +20,12 @@ parallax: true
       <strong>organized plumbing report</strong>—what they found, photos, recommended repairs—ready to send the
       homeowner, attach to the job, and file. No app for your techs. No paperwork after 6pm.
     </p>
-    <div class="hero-cta">
-      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="plumbing-hero">Get Started — 20 Extra Free Reports</a>
-      <a href="{{ '/assets/samples/Trudee_Sample_Report.pdf' | relative_url }}" target="_blank" rel="noopener" class="btn btn-secondary js-sample-report-link">See a Sample Report</a>
-    </div>
+    {% include text-cta.html source="plumbing-hero" variant="dark" %}
+    <p class="cta-secondary cta-secondary-dark">
+      <a href="{{ '/assets/samples/Trudee_Sample_Report.pdf' | relative_url }}" target="_blank" rel="noopener" class="js-sample-report-link">See a sample report first</a>
+      &middot; Want 20 more free reports?
+      <a href="#" class="js-beta-form-open" data-cta-source="plumbing-hero-secondary">Tell us who you are</a>
+    </p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="hero-stat-value">90 Sec</span>
@@ -99,8 +101,8 @@ parallax: true
       <div class="scenario">
         <div class="scenario-icon">2</div>
         <div>
-          <h4>They Text It In</h4>
-          <p>Same as texting the dispatcher, because that's what they already do. No app, no login, no upload screen on a one-bar connection.</p>
+          <h4>They Text It to {{ site.sms.display }}</h4>
+          <p>Same as texting the dispatcher, because that's what they already do. Save it in the truck's phone once. No app, no login, no upload screen on a one-bar connection.</p>
         </div>
       </div>
       <div class="scenario">
@@ -317,8 +319,12 @@ parallax: true
   <div class="container">
     <div class="cta-close-inner">
       <h2 class="cta-close-title">Put one truck on it this week.</h2>
-      <p class="cta-close-sub">Pick your busiest tech, give them the number, and see what comes back after five calls. Your first 5 reports are free—sign up and we'll add 20 more.</p>
-      <a href="#" class="btn btn-primary js-beta-form-open" data-cta-source="plumbing-closing">Get Started — 20 Extra Free Reports</a>
+      <p class="cta-close-sub">Pick your busiest tech, give them this number, and see what comes back after five calls.</p>
+      {% include text-cta.html source="plumbing-closing" variant="dark" %}
+      <p class="cta-secondary cta-secondary-dark">
+        Want 20 more on top of your 5?
+        <a href="#" class="js-beta-form-open" data-cta-source="plumbing-closing-secondary">Tell us who you are</a>
+      </p>
     </div>
   </div>
 </section>

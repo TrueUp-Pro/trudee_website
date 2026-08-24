@@ -10,6 +10,16 @@ url: "https://trudee.pro"
 # jekyll.environment == "production" (GitHub Pages sets this on deploy).
 ga_measurement_id: G-XK98Y5XC0V
 
+# Trudee's live SMS number — the single source of truth. Referenced by
+# _includes/text-cta.html, the footer, and /sms/. Defined here because it was
+# previously hardcoded across several pages and drifted (a dev 206 number
+# shipped alongside the live 217 one). Change it here only.
+sms:
+  e164: "+12173878333"      # for sms: links
+  display: "1 (217) 387-8333"
+  vanity: "1 (217) E-TRUDEE"
+  keyword: "OPTIN"
+
 # Build — no theme so our _layouts and css/main.css are used
 theme: null
 
@@ -19,6 +29,10 @@ permalink: pretty
 
 # Exclude from build
 exclude:
+  # Dev-only SMS page for the alternative system — carries a different number
+  # (206) than the live /sms/ page, so shipping it confuses visitors. Kept in
+  # the repo for that work; drop this line to publish it again.
+  - sms-dev.html
   - Gemfile
   - Gemfile.lock
   - README.md

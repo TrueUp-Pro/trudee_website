@@ -1824,3 +1824,148 @@ hr {
   font-size: 1.0625rem;
   line-height: 1.7;
 }
+
+/* ==========================================================================
+   PRIMARY TEXT-TO-START CTA (_includes/text-cta.html)
+   The site's main action. Renders on light sections by default; add
+   .text-cta-dark on dark/hero backgrounds.
+   ========================================================================== */
+
+.text-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0 auto;
+}
+
+.text-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-orange);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(244, 121, 32, 0.4);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.text-cta-button:hover {
+  background: var(--color-orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 121, 32, 0.5);
+}
+
+.text-cta-button strong { font-weight: 800; letter-spacing: 0.03em; }
+
+.text-cta-icon { display: inline-flex; }
+
+/* The number itself — always visible, always selectable. On desktop the
+   sms: link above is usually inert, so this is the only way to get it. */
+.text-cta-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  user-select: all;
+}
+
+.text-cta-number-vanity {
+  font-size: clamp(1.5rem, 3.5vw, 2.125rem);
+  font-weight: 700;
+  color: var(--color-blue-dark);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.text-cta-number-digits {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+}
+
+.text-cta-note {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.text-cta-note strong { color: var(--color-text); }
+
+/* Dark-section variant */
+.text-cta-dark .text-cta-number-vanity { color: #fff; }
+.text-cta-dark .text-cta-number-digits { color: rgba(255, 255, 255, 0.75); }
+.text-cta-dark .text-cta-note { color: rgba(255, 255, 255, 0.8); }
+.text-cta-dark .text-cta-note strong { color: #fff; }
+
+/* Secondary link under the primary action — the beta form / bonus reports */
+.cta-secondary {
+  margin: var(--space-md) 0 0;
+  font-size: 0.9375rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.cta-secondary a {
+  color: var(--color-blue-dark);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text-cta-dark + .cta-secondary,
+.cta-secondary-dark { color: rgba(255, 255, 255, 0.8); }
+
+.cta-secondary-dark a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+  text-underline-offset: 3px;
+}
+
+.cta-secondary-dark a:hover { text-decoration-color: #fff; }
+
+@media (max-width: 600px) {
+  .text-cta-button { width: 100%; justify-content: center; padding: var(--space-md); }
+}
+
+/* Footer number — present on every page so the action is never more than a
+   scroll away, including on pricing and the legal pages. */
+.footer-number {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: var(--space-lg) 0 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-number-label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
+.footer-number-value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-number-value:hover { text-decoration: underline; }
+
+.footer-number-digits {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  opacity: 0.75;
+  user-select: all;
+}

@@ -1,0 +1,37 @@
+{% comment %}
+  The primary action on the site: text OPTIN to Trudee's number.
+
+  Anyone can do this — no whitelist, no account — and it grants 5 free
+  reports, so this is the real "start here", not the beta form. The form is
+  secondary and only adds the 20 bonus reports.
+
+  The tap-to-text link pre-fills the OPTIN body, which works on phones. It is
+  frequently inert on desktop, so the digits are ALWAYS rendered as selectable
+  text beside it — a desktop visitor has to read the number off the screen and
+  type it into their phone, and hiding it behind a dead link would strand them.
+
+  Params:
+    source  — analytics label for where the block sits (required)
+    variant — "dark" on dark sections, omit for light backgrounds
+{% endcomment %}
+<div class="text-cta{% if include.variant == 'dark' %} text-cta-dark{% endif %}">
+  <a class="text-cta-button js-text-cta"
+     href="sms:{{ site.sms.e164 }}?&body={{ site.sms.keyword }}"
+     data-cta-source="{{ include.source }}">
+    <span class="text-cta-icon" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </span>
+    <span class="text-cta-button-text">
+      Text <strong>{{ site.sms.keyword }}</strong> to start
+    </span>
+  </a>
+  <div class="text-cta-number">
+    <span class="text-cta-number-vanity">{{ site.sms.vanity }}</span>
+    <span class="text-cta-number-digits">{{ site.sms.display }}</span>
+  </div>
+  <p class="text-cta-note">
+    Your first <strong>5 reports are free</strong> — no app, no account, no card.
+  </p>
+</div>
