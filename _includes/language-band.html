@@ -1,0 +1,54 @@
+{% comment %}
+  Spanish-in / English-out. A large share of field crews narrate more
+  precisely in Spanish than in English, and the office needs the document in
+  English — so this is a buying reason, not a footnote. Given its own band
+  rather than a feature-card line so it cannot be skimmed past.
+
+  Claim is deliberately narrow: the tech NARRATES in Spanish, the REPORT comes
+  back in English. Do not broaden this to "any language" without confirming
+  what the pipeline actually supports.
+
+  Params:
+    variant — "dark" on dark sections, omit for light backgrounds
+{% endcomment %}
+<section class="section lang-band{% if include.variant == 'dark' %} section-dark lang-band-dark{% else %} section-alt{% endif %}">
+  <div class="container">
+    <div class="lang-band-inner">
+      <div class="lang-band-copy">
+        <span class="section-label">Habla Español</span>
+        <h2 class="lang-band-title">
+          Your Tech Records in Spanish.<br>
+          <span class="lang-band-highlight">The Report Comes Back in English.</span>
+        </h2>
+        <p class="lang-band-body">
+          Your crew describes what they found in the language they actually think in—fast,
+          detailed, no hunting for the English word while standing in a crawlspace. Trudee
+          returns the finished report in English, ready for the office, the homeowner, and the file.
+        </p>
+        <p class="lang-band-body lang-band-body-muted">
+          Nothing to switch on. Just talk—Trudee handles the rest.
+        </p>
+      </div>
+      <div class="lang-band-visual" aria-hidden="true">
+        <div class="lang-flow">
+          <div class="lang-flow-card lang-flow-in">
+            <span class="lang-flow-tag">Se graba en</span>
+            <span class="lang-flow-lang">Español</span>
+            <span class="lang-flow-quote">“Encontré una fuga en la línea de agua caliente, debajo del piso…”</span>
+          </div>
+          <div class="lang-flow-arrow">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="12" x2="20" y2="12"></line>
+              <polyline points="14 6 20 12 14 18"></polyline>
+            </svg>
+          </div>
+          <div class="lang-flow-card lang-flow-out">
+            <span class="lang-flow-tag">Report comes back in</span>
+            <span class="lang-flow-lang">English</span>
+            <span class="lang-flow-quote">“Active leak found on the hot water line beneath the subfloor…”</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

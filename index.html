@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Text a Video, Get a Report"
-description: "Text a video, get a report. Trudee turns a quick phone video into an organized, professional field report."
+description: "Text a video, get a report. Record in English or Spanish and get an organized, professional field report back in English. No app, no account."
 parallax: true
 ---
 
@@ -11,9 +11,9 @@ parallax: true
     <span class="hero-badge">Now Onboarding Beta Crews</span>
     <h1>Text a Video.<br><span class="highlight">Get a Report.</span></h1>
     <p class="hero-subtitle">
-      Record a quick video on the job. Text it to Trudee. Get back an
-      <strong>organized, professional report</strong>—structured, factual, and ready to share.
-      No app to learn, no forms to fill out.
+      Record a quick video on the job—<strong>in English or Spanish</strong>. Text it to Trudee.
+      Get back an <strong>organized, professional report in English</strong>—structured, factual,
+      and ready to share. No app to learn, no forms to fill out.
     </p>
     {% include text-cta.html source="hero" variant="dark" %}
     <p class="cta-secondary cta-secondary-dark">
@@ -33,6 +33,10 @@ parallax: true
       <div class="hero-stat">
         <span class="hero-stat-value">0 Apps</span>
         <span class="hero-stat-label">Works right over text</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">ES &rarr; EN</span>
+        <span class="hero-stat-label">Spanish in, English out</span>
       </div>
     </div>
   </div>
@@ -80,41 +84,7 @@ parallax: true
   </div>
 </section>
 
-<!-- How It Works -->
-<section class="section" id="how-it-works">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">How It Works</span>
-      <h2 class="section-title">Three Steps. One Report.</h2>
-      <p class="section-subtitle">
-        Trudee turns the video you'd take anyway into a document you can actually use.
-      </p>
-    </div>
-    <div class="scenarios scenarios-3">
-      <div class="scenario">
-        <div class="scenario-icon">1</div>
-        <div>
-          <h4>Record</h4>
-          <p>Walk the site with your phone and narrate what you see—the leak, the panel, the progress, the damage.</p>
-        </div>
-      </div>
-      <div class="scenario">
-        <div class="scenario-icon">2</div>
-        <div>
-          <h4>Text It to {{ site.sms.vanity }}</h4>
-          <p>Send the video by text to <strong>{{ site.sms.display }}</strong>. No app to download, no account to set up, no upload screen to wait on.</p>
-        </div>
-      </div>
-      <div class="scenario">
-        <div class="scenario-icon">3</div>
-        <div>
-          <h4>Get Your Report</h4>
-          <p>Minutes later you get back a structured, professional report—findings, observations, and next steps, ready to share with a customer or your team.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% include language-band.html %}
 
 <!-- What Trudee Does -->
 <section class="section" id="what-it-does">
